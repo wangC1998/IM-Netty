@@ -18,6 +18,7 @@
 
     <modules>
         <module>im-ui-01</module>
+        <module>im-ui-02</module>
     </modules>
 
 
