@@ -31,7 +31,7 @@ public abstract class UIObject extends Stage {
      * @param <T>
      * @return
      */
-    protected  <T> T $(String id, Class<T> clazz) {
+    public <T> T $(String id, Class<T> clazz) {
         return (T) root.lookup("#" + id);
     }
 

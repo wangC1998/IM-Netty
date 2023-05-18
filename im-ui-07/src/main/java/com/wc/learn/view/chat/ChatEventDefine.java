@@ -1,7 +1,11 @@
 package com.wc.learn.view.chat;
 
-import javafx.scene.control.Button;
+import com.wc.learn.view.chat.data.TalkBoxData;
+import javafx.scene.control.*;
+import javafx.scene.input.KeyCode;
 import javafx.scene.layout.Pane;
+
+import java.util.Date;
 
 /**
  * 聊天窗口的事件定义
@@ -20,6 +24,11 @@ public class ChatEventDefine {
         this.chatInit = chatInit;
         this.chatEvent = chatEvent;
         this.chatMethod = chatMethod;
+
+        doEventTextSend();
+        doEventTouchSend();
+        min();
+        quit();
     }
 
 
@@ -119,6 +128,65 @@ public class ChatEventDefine {
             if (visible) return;
             bar_friend.setStyle("-fx-background-image: url('/fxml.chat/img/system/friend_0.png')");
         });
+    }
+
+    // 发送消息事件[键盘]
+    private void doEventTextSend() {
+        TextArea txt_input = chatInit.$("txt_input", TextArea.class);
+        txt_input.setOnKeyPressed(event -> {
+            if (event.getCode().equals(KeyCode.ENTER)) {
+                doEventSendMsg();
+            }
+        });
+    }
+
+    // 发送消息事件[按钮]
+    private void doEventTouchSend() {
+        Label touch_send = chatInit.$("touch_send", Label.class);
+        touch_send.setOnMousePressed(event -> {
+            doEventSendMsg();
+        });
+    }
+
+    private void doEventSendMsg() {
+        TextArea txt_input = chatInit.$("txt_input", TextArea.class);
+        MultipleSelectionModel selectionModel = chatInit.$("talkList", ListView.class).getSelectionModel();
+        Pane selectedItem = (Pane) selectionModel.getSelectedItem();
+        // 对话信息
+        TalkBoxData talkBoxData = (TalkBoxData) selectedItem.getUserData();
+        String msg = txt_input.getText();
+        if (null == msg || "".equals(msg) || "".equals(msg.trim())) {
+            return;
+        }
+        Date msgDate = new Date();
+        // 发送消息
+        System.out.println("发送消息：" + msg);
+        // 发送事件给自己添加消息 自己发消息在右侧,直接进行发送.
+        chatMethod.addTalkMsgRight(talkBoxData.getTalkId(), msg, msgDate, true, true, false);
+        txt_input.clear();
+    }
+
+
+    /**
+     * 窗口的最小化按钮
+     */
+    public void min() {
+        chatInit.min.setOnAction(event -> {
+            chatInit.setIconified(true);
+        });
+
+    }
+
+
+    /**
+     * 关闭事件按钮
+     */
+    public void quit(){
+        chatInit.close.setOnAction(event -> {
+            chatInit.close();
+            System.exit(0);
+        });
+
     }
 
 

@@ -28,6 +28,15 @@ public abstract class ChatInit extends UIObject {
 
     public Pane groupBarFriend;
 
+    public Button close;
+
+    public Button min;
+
+
+    public String userId;       // 用户ID
+    public String userNickName; // 用户昵称
+    public String userHead;     // 用户头像
+
 
     public ChatInit(IChatEvent chatEvent) {
         this.chatEvent = chatEvent;
@@ -59,9 +68,7 @@ public abstract class ChatInit extends UIObject {
         barFriends = $("bar_friend", Button.class);
         groupBarChat = $("group_bar_chat", Pane.class);
         groupBarFriend = $("group_bar_friend", Pane.class);
+        close = $("group_bar_chat_close", Button.class);
+        min = $("group_bar_chat_min", Button.class);
     }
-
-
-
-
 }

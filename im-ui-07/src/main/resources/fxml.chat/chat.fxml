@@ -33,6 +33,13 @@
         <!-- 组；group_bar_chat -->
         <Pane visible="true" id="group_bar_chat" layoutX="76" layoutY="1" prefWidth="1166" prefHeight="818" style="-fx-background-color:pink;">
             <children>
+                <!-- 操作栏；最小化、关闭 -->
+                <Pane id="operation" layoutX="314" prefWidth="852" prefHeight="32">
+                    <children>
+                        <Button id="group_bar_chat_min" styleClass="min" layoutX="767" prefWidth="42" prefHeight="32"/>
+                        <Button id="group_bar_chat_close" styleClass="close" layoutX="810" prefWidth="42" prefHeight="32"/>
+                    </children>
+                </Pane>
                 <!-- 搜索栏 -->
                 <Pane styleClass="search" prefHeight="80" prefWidth="314">
                     <children>
