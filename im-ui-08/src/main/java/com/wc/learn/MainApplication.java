@@ -43,6 +43,16 @@ public class MainApplication extends Application {
         chat.addTalkMsgGroupLeft("5307397", "1000004", "哈尼克兔", "04_50", "等我回头看", new Date(), true, false, true);
 
 
+        // 群组
+        chat.addFriendGroup("5307397", "虫洞 · 技术栈(1区)", "group_1");
+        chat.addFriendGroup("5307392", "CSDN 社区专家", "group_2");
+        chat.addFriendGroup("5307399", "洗脚城VIP", "group_3");
+
+        // 好友
+        chat.addFriendUser(false, "1000004", "哈尼克兔", "04_50");
+        chat.addFriendUser(false, "1000001", "拎包冲", "02_50");
+        chat.addFriendUser(false, "1000002", "铁锤", "03_50");
+        chat.addFriendUser(true, "1000003", "小傅哥 | bugstack.cn", "01_50");
 
     }
 
