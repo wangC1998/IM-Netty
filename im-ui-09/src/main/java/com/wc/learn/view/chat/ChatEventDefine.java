@@ -161,6 +161,7 @@ public class ChatEventDefine {
         Date msgDate = new Date();
         // 发送消息
         System.out.println("发送消息：" + msg);
+        chatEvent.doSendMsg(chatInit.userId, talkBoxData.getTalkId(), talkBoxData.getTalkType(), msg, msgDate);
         // 发送事件给自己添加消息 自己发消息在右侧,直接进行发送.
         chatMethod.addTalkMsgRight(talkBoxData.getTalkId(), msg, msgDate, true, true, false);
         txt_input.clear();
@@ -177,6 +178,8 @@ public class ChatEventDefine {
             switchBarFriends(chatInit.$("bar_friend", Button.class), chatInit.$("group_bar_friend", Pane.class), false);
             // 3. 事件处理；填充到对话框
             System.out.println("事件处理；填充到对话框");
+            chatEvent.doEventAddTalkUser(chatInit.userId, userFriendId);
+
         });
     }
 
@@ -190,6 +193,7 @@ public class ChatEventDefine {
             switchBarFriends(chatInit.$("bar_friend", Button.class), chatInit.$("group_bar_friend", Pane.class), false);
             // 3. 事件处理；填充到对话框
             System.out.println("事件处理；填充到对话框");
+            chatEvent.doEventAddTakGroup(chatInit.userId, groupId);
         });
     }
 
@@ -210,6 +214,7 @@ public class ChatEventDefine {
      */
     public void quit(){
         chatInit.close.setOnAction(event -> {
+            chatEvent.doQuit();
             chatInit.close();
             System.exit(0);
         });

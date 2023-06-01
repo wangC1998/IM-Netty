@@ -7,6 +7,7 @@ import java.util.Date;
 
 /**
  * 事件列表接口
+ * 这个接口的定义就像:我们在一个封闭的系统内留下的出口,将系统内部的具体事件对外实现,交由外部进行实现.以此进行外部的通知. 定义一个接口,然后将具体的实现类传递进来.
  * @author wc
  */
 public interface IChatEvent {

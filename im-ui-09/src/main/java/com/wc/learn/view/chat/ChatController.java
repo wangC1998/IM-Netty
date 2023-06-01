@@ -105,6 +105,7 @@ public class ChatController extends ChatInit implements IChatMethod {
         // 从对话框中删除
         talkElement.delete().setOnMouseClicked(event -> {
             System.out.println("删除对话框：" + talkName);
+            chatEvent.doEventDelTalkUser(super.userId, talkId);
             talkList.getItems().remove(talkElementPane);
             talkElement.clearMsgSketch();
         });
@@ -288,6 +289,7 @@ public class ChatController extends ChatInit implements IChatMethod {
         // 点击事件
         friendLuckUser.statusLabel().setOnMousePressed(event -> {
             System.out.println("添加好友");
+            chatEvent.doEventAddLuckUser(super.userId, userId);
         });
     }
 }

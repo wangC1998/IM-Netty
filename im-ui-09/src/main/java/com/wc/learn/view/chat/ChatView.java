@@ -57,6 +57,7 @@ public class ChatView {
             ListView<Pane> listView = element.friendLuckListView();
             listView.getItems().clear();
             System.out.println("添加好友");
+            chatEvent.addFriendLuck(chatInit.userId, listView);
         });
         // 搜索框事件
         TextField friendLuckSearch = element.friendLuckSearch();
@@ -69,6 +70,7 @@ public class ChatView {
                 if (text.length() > 30) text = text.substring(0, 30);
                 text = text.trim();
                 System.out.println("搜搜好友：" + text);
+                chatEvent.doFriendLuckSearch(chatInit.userId, text);
                 // 搜索清空元素
                 element.friendLuckListView().getItems().clear();
 
