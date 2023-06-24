@@ -1,0 +1,1 @@
+package org.itstack.naive.chat.infrastructure.common;
