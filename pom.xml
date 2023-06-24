@@ -19,6 +19,7 @@
     <modules>
         <module>im-ui-01</module>
         <module>im-ui-02</module>
+        <module>im-server-01</module>
     </modules>
 
 
