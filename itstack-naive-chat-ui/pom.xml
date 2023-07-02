@@ -4,50 +4,10 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>org.wc</groupId>
-    <artifactId>IM-Netty</artifactId>
-    <version>1.0</version>
-    <packaging>pom</packaging>
-
-    <parent>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.1.7.RELEASE</version>
-        <relativePath/> <!-- lookup parent from repository -->
-    </parent>
-
-    <modules>
-        <module>im-ui-01</module>
-        <module>im-ui-02</module>
-        <module>im-server-01</module>
-        <module>im-server-02</module>
-        <module>im-server-03</module>
-        <module>im-server-04</module>
-        <module>itstack-naive-chat client-01</module>
-        <module>itstack-naive-chat-client-01</module>
-        <module>itstack-naive-chat-server-agreement</module>
-    </modules>
-
-
-    <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <java.version>1.8</java.version>
-        <netty_version>4.1.36.Final</netty_version>
-        <protostuff.version>1.0.10</protostuff.version>
-        <objenesis.version>2.4</objenesis.version>
-    </properties>
-
-    <dependencyManagement>
-        <dependencies>
-            <!-- Netty 4.1.36 -->
-            <dependency>
-                <groupId>io.netty</groupId>
-                <artifactId>netty-all</artifactId>
-                <version>${netty_version}</version>
-            </dependency>
-        </dependencies>
-    </dependencyManagement>
+    <groupId>org.itstack</groupId>
+    <artifactId>itstack-naive-chat-ui</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
+    <packaging>jar</packaging>
 
     <dependencies>
         <dependency>
@@ -55,15 +15,10 @@
             <artifactId>slf4j-api</artifactId>
             <version>1.7.25</version>
         </dependency>
-
-        <dependency>
-            <groupId>io.netty</groupId>
-            <artifactId>netty-all</artifactId>
-        </dependency>
     </dependencies>
 
     <build>
-        <finalName>demo</finalName>
+        <finalName>itstack-naive-chat-ui</finalName>
         <plugins>
             <!-- 编译plugin -->
             <plugin>
@@ -96,6 +51,15 @@
                     </execution>
                 </executions>
             </plugin>
+            <plugin>
+                <groupId>com.zenjava</groupId>
+                <artifactId>javafx-maven-plugin</artifactId>
+                <version>8.8.3</version>
+                <configuration>
+                    <mainClass>org.itstack.naive.chat.ui.Application</mainClass>
+                </configuration>
+            </plugin>
         </plugins>
     </build>
+   
 </project>
