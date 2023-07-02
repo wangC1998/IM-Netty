@@ -1,6 +1,9 @@
 package org.itstack.naive.chat.domain;
 
-public class MsgInfo {
+import org.itstack.naive.chat.protocol.Command;
+import org.itstack.naive.chat.protocol.Packet;
+
+public class MsgInfo extends Packet {
     private String channelId;
     private String msgContent;
 
@@ -26,5 +29,10 @@ public class MsgInfo {
 
     public void setMsgContent(String msgContent) {
         this.msgContent = msgContent;
+    }
+
+    @Override
+    public Byte getCommand() {
+        return  Command.MsgInfo;
     }
 }

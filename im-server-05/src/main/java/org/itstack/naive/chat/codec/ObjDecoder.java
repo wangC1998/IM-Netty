@@ -3,16 +3,14 @@ package org.itstack.naive.chat.codec;
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.handler.codec.ByteToMessageDecoder;
+import org.itstack.naive.chat.protocol.Packet;
 import org.itstack.naive.chat.util.SerializationUtil;
 
 import java.util.List;
 
 public class ObjDecoder extends ByteToMessageDecoder {
 
-    private Class<?> genericClass;
-
-    public ObjDecoder(Class<?> genericClass) {
-        this.genericClass = genericClass;
+    public ObjDecoder() {
     }
 
     @Override
@@ -31,11 +29,14 @@ public class ObjDecoder extends ByteToMessageDecoder {
             in.resetReaderIndex();
             return;
         }
+        // 对象类型标志位
+        byte command = in.readByte();
+
         // 读取data数据
-        byte[] data = new byte[dataLength];
+        byte[] data = new byte[dataLength-1];
         in.readBytes(data);
         // 反序列化
-        Object obj = SerializationUtil.deserialize(data, genericClass);
+        Object obj = SerializationUtil.deserialize(data, Packet.getPacketType(command));
         out.add(obj);
     }
 }
