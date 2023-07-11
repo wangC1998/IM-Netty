@@ -26,6 +26,8 @@
         <module>itstack-naive-chat client-01</module>
         <module>itstack-naive-chat-client-01</module>
         <module>itstack-naive-chat-server-agreement</module>
+        <module>itstack-naive-chat-client</module>
+        <module>naive-chat-agreement</module>
     </modules>
 
 
