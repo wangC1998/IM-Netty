@@ -9,7 +9,7 @@ import io.netty.channel.socket.nio.NioSocketChannel;
 public class NettyClient {
 
     public static void main(String[] args) {
-        new NettyClient().connect("127.0.0.1" ,7397);
+        new NettyClient().connect("localhost" ,8080);
 
     }
 

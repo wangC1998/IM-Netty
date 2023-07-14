@@ -1,23 +1,17 @@
-package org.itstack.naive.chat.ui;
+package com.wc.learn;
 
 import com.wc.learn.application.UIService;
 import com.wc.learn.event.ChatEvent;
 import com.wc.learn.event.LoginEvent;
 import com.wc.learn.socket.NettyClient;
 import io.netty.channel.Channel;
-import javafx.scene.control.ListView;
-import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
-import org.itstack.naive.chat.ui.view.chat.element.group_bar_friend.ElementFriendLuckUser;
 import org.itstack.naive.chat.ui.view.chat.ChatController;
-import org.itstack.naive.chat.ui.view.chat.IChatEvent;
 import org.itstack.naive.chat.ui.view.chat.IChatMethod;
-import org.itstack.naive.chat.ui.view.login.ILoginMethod;
 import org.itstack.naive.chat.ui.view.login.LoginController;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.util.Date;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
@@ -36,6 +30,11 @@ public class Application extends javafx.application.Application {
     private static ExecutorService executorService = Executors.newFixedThreadPool(2);
 
     private static ScheduledExecutorService scheduledExecutorService = Executors.newScheduledThreadPool(1);
+
+    public static void main(String[] args) {
+        launch(args);
+    }
+
 
     @Override
     public void start(Stage primaryStage) throws Exception {
@@ -69,8 +68,5 @@ public class Application extends javafx.application.Application {
         logger.info("Netty链接服务完成 {}", channel.localAddress());
     }
 
-    public static void main(String[] args) {
-        launch(args);
-    }
 
 }
